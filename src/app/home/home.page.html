@@ -12,7 +12,7 @@
     <ion-select [(ngModel)]="pickedSong" (ionChange)="addToPlayList()">
       <ion-select-option *ngFor="let song of songList" [value]="song">
         <ion-label>{{ song.title }}</ion-label>
-      </ion-select-option> 
+      </ion-select-option>
     </ion-select>
   </ion-item>
 
@@ -21,7 +21,28 @@
       <h3>PlayList</h3>
     </ion-list-header>
 
-    
+    <ion-reorder-group [disabled]="false" (ionItemReorder)="reorderPlayList($event)">
+      <ion-item *ngFor="let song of playList">
+        <ion-label>{{ song.title }}</ion-label>
+        <ion-avatar slot="start">
+          <ion-img src="/assets/{{song.image}}"></ion-img>
+        </ion-avatar>
+  
+        <ion-icon name="musical-notes" *ngIf="song.playing"></ion-icon>
+
+        <ion-reorder>
+          <ion-icon name="reorder"></ion-icon>
+        </ion-reorder>
+      </ion-item>
+    </ion-reorder-group>
+
+
   </ion-list>
 
 </ion-content>
+
+<ion-footer>
+  <ion-tab-bar>
+    <ion-button expand="block" (click)="playSound()">Lancer la lecture</ion-button>
+  </ion-tab-bar>
+</ion-footer>
