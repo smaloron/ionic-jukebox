@@ -8,13 +8,20 @@
 
 <ion-content>
   <ion-item>
-    <ion-select>
-      <ion-select-option *ngFor="let song of songList">
+    <ion-label position="stacked">Choisir un titre</ion-label>
+    <ion-select [(ngModel)]="pickedSong" (ionChange)="addToPlayList()">
+      <ion-select-option *ngFor="let song of songList" [value]="song">
         <ion-label>{{ song.title }}</ion-label>
-        <ion-avatar slot="start">
-        <ion-img src="/assets/{{song.image}}"></ion-img>
-        </ion-avatar>
       </ion-select-option> 
     </ion-select>
   </ion-item>
+
+  <ion-list>
+    <ion-list-header>
+      <h3>PlayList</h3>
+    </ion-list-header>
+
+    
+  </ion-list>
+
 </ion-content>

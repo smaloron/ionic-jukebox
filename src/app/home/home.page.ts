@@ -81,6 +81,17 @@ export class HomePage {
     }
   ];
 
+  pickedSong: SongInterface = null;
+
+  playList: Array<SongInterface>= [];
+
   constructor() {}
+
+  addToPlayList(){
+    if(this.pickedSong){
+      this.playList.push(this.pickedSong);
+      this.pickedSong = null;
+    } 
+  }
 
 }
